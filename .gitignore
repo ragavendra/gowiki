@@ -2,9 +2,13 @@
 *.swp
 *.txt
 *.jpg
+*.out
 
 # Ignore all bin, logfiles and tempfiles.
 /bin
 /log/*
 !/log/.keep
 /tmp
+
+# project specific
+wiki
