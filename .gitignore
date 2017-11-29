@@ -1,0 +1,10 @@
+#custom ignores
+*.swp
+*.txt
+*.jpg
+
+# Ignore all bin, logfiles and tempfiles.
+/bin
+/log/*
+!/log/.keep
+/tmp
