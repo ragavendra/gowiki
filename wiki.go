@@ -1,11 +1,13 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
 	"io/ioutil"
 	"net/http"
 	"regexp"
 	"errors"
+	"github.com/ragavendra/gowiki/stringutil"
 )
 
 var templates = template.Must(template.ParseFiles("templ/edit.html", "templ/view.html"))
@@ -58,7 +60,7 @@ func editHandler(w http.ResponseWriter, r *http.Request, title string) {
 	renderTemplate(w, "edit", p)
 }
 
-func viewHandler(w http.ResponseWriter, r *http.Request, title string) {
+func homeHandler(w http.ResponseWriter, r *http.Request, title string) {
 	p, err := loadPage(title)
 	if err != nil {
 		http.Redirect(w, r, "/edit/" + title, http.StatusFound)
@@ -67,7 +69,7 @@ func viewHandler(w http.ResponseWriter, r *http.Request, title string) {
 	renderTemplate(w, "view", p)
 }
 
-func homeHandler(w http.ResponseWriter, r *http.Request, title string) {
+func viewHandler(w http.ResponseWriter, r *http.Request, title string) {
 	p, err := loadPage(title)
 	if err != nil {
 		http.Redirect(w, r, "/edit/" + title, http.StatusFound)
@@ -100,4 +102,6 @@ func main() {
     http.HandleFunc("/save/", makeHandler(saveHandler))
     http.HandleFunc("/", makeHandler(viewHandler))
     http.ListenAndServe(":8080", nil)
+	
+	fmt.Printf(stringutil.Reverse("!oG ,olleH"))
 }
